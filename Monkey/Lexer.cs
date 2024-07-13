@@ -46,7 +46,7 @@ public class Lexer
             ReadChar();
         }
 
-        return _input.Substring(position, _position);
+        return _input.Substring(position, _position-position);
     }
 
     private string ReadNumber()
@@ -57,7 +57,7 @@ public class Lexer
             ReadChar();
         }
 
-        return _input.Substring(position, _position);
+        return _input.Substring(position, _position-position);
     }
 
     private void SkipWhiteSpace()
@@ -113,6 +113,8 @@ public class Lexer
                         Literal = literal,
                         Type = Token.LookupIdent(literal)
                     };
+                    // early return to prevent calling ReadChar()
+                    // it already execute inside of ReadIdentifier()
                     return token;
                 }
                 else if (IsDigit(_ch))
@@ -122,6 +124,8 @@ public class Lexer
                         Literal = ReadNumber(),
                         Type = TokenType.Int
                     };
+                    // early return to prevent calling ReadChar()
+                    // it already execute inside of ReadIdentifier()
                     return token;
                 }
                 else
