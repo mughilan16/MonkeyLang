@@ -1,0 +1,15 @@
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\bin\Debug\net8.0\Monkey.exe
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\bin\Debug\net8.0\Monkey.deps.json
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\bin\Debug\net8.0\Monkey.runtimeconfig.json
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\bin\Debug\net8.0\Monkey.dll
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\bin\Debug\net8.0\Monkey.pdb
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.AssemblyInfoInputs.cache
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.AssemblyInfo.cs
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.sourcelink.json
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.dll
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\refint\Monkey.dll
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.pdb
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\Monkey.genruntimeconfig.cache
+C:\Users\ADMIN\RiderProjects\MonkeyLang\Monkey\obj\Debug\net8.0\ref\Monkey.dll

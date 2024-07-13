@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qWAdvdc3fwGPIYuBx0CLqVyrg+mMQ6TdjOHugd/gfx1kBu7Nr7DksUHVlgUytt4MntdNceu/bjDZv60MUI/hHQ==",
+  "dgSpecHash": "0ow5BxdRVC5LGMMK37SkwHrhHsEIECUL4QLI8u3VGwp11xDGCfV7kpXpnvGj+K1PB11nBJmsYhusUVA76dz42w==",
   "success": true,
-  "projectFilePath": "/home/mughil/personal/Monkey/Monkey/Monkey.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

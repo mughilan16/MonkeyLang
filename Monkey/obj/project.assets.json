@@ -8,24 +8,27 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/mughil/.nuget/packages/": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mughil/personal/Monkey/Monkey/Monkey.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj",
       "projectName": "Monkey",
-      "projectPath": "/home/mughil/personal/Monkey/Monkey/Monkey.csproj",
-      "packagesPath": "/home/mughil/.nuget/packages/",
-      "outputPath": "/home/mughil/personal/Monkey/Monkey/obj/",
+      "projectPath": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/mughil/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +62,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
