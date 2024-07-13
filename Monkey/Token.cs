@@ -41,8 +41,15 @@
         Ident,
         Int,
 
-        Assign,
-        Plus,
+        Assign = '=',
+        Plus = '+',
+        Minus = '-',
+        Bang = '!',
+        Asterisk = '*',
+        Slash = '/',
+        
+        Lt = '<',
+        Gt = '>',
 
         Comma = ',',
         Semicolon = ';',
@@ -53,6 +60,7 @@
         Rbrace = '}',
 
         Function,
-        Let
+        Let,
+        
     }
 }

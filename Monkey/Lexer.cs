@@ -83,6 +83,24 @@ public class Lexer
             case (byte) '+':
                 token = new Token(TokenType.Plus, _ch);
                 break;
+            case (byte) '-':
+                token = new Token(TokenType.Minus, _ch);
+                break;
+            case (byte) '*':
+                token = new Token(TokenType.Asterisk, _ch);
+                break;
+            case (byte) '/':
+                token = new Token(TokenType.Slash, _ch);
+                break;
+            case (byte) '<':
+                token = new Token(TokenType.Lt, _ch);
+                break;
+            case (byte) '>':
+                token = new Token(TokenType.Gt, _ch);
+                break;
+            case (byte) '!':
+                token = new Token(TokenType.Bang, _ch);
+                break;
             case (byte) ';':
                 token = new Token(TokenType.Semicolon, _ch);
                 break;

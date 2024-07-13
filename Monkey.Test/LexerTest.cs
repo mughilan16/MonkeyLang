@@ -49,7 +49,8 @@ namespace Monkey.Test
                                  x + y;
                                  };
                                  let result = add(five, ten);
-
+                                 !-/*5;
+                                 5 < 10 > 5;
                                  """;
             var expected = new List<Token>
             {
@@ -88,6 +89,18 @@ namespace Monkey.Test
                 new Token(TokenType.Comma, ","),
                 new Token(TokenType.Ident, "ten"),
                 new Token(TokenType.Rparan, ")"),
+                new Token(TokenType.Semicolon, ";"),
+                new Token(TokenType.Bang, "!"),
+                new Token(TokenType.Minus, "-"),
+                new Token(TokenType.Slash, "/"),
+                new Token(TokenType.Asterisk, "*"),
+                new Token(TokenType.Int, "5"),
+                new Token(TokenType.Semicolon, ";"),
+                new Token(TokenType.Int, "5"),
+                new Token(TokenType.Lt, "<"),
+                new Token(TokenType.Int, "10"),
+                new Token(TokenType.Gt, ">"),
+                new Token(TokenType.Int, "5"),
                 new Token(TokenType.Semicolon, ";"),
                 new Token(TokenType.Eof, ""),
             };
