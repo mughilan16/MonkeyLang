@@ -68,6 +68,17 @@ public class Lexer
         }
     }
 
+    private byte PeekChar()
+    {
+        if (_readPosition >= _input.Length)
+        {
+            return 0;
+        }
+        else
+        {
+            return (byte)_input[_readPosition];
+        }
+    }
     
     public Token NextToken()
     {
@@ -78,7 +89,36 @@ public class Lexer
         switch (_ch)
         {
             case (byte) '=':
-                token = new Token(TokenType.Assign, _ch);
+                if (PeekChar() == '=')
+                {
+                    var ch = (char)_ch;
+                    ReadChar();
+                    token = new Token
+                    {
+                        Type= TokenType.Eq,
+                        Literal = ch.ToString() + (char)_ch
+                    };
+                }
+                else
+                {
+                    token = new Token(TokenType.Assign, _ch);
+                }
+                break;
+            case (byte) '!':
+                if (PeekChar() == '=')
+                {
+                    var ch = (char)_ch;
+                    ReadChar();
+                    token = new Token
+                    {
+                        Type= TokenType.NotEq,
+                        Literal = ch.ToString() + (char) _ch
+                    };
+                }
+                else
+                {
+                    token = new Token(TokenType.Bang, _ch);
+                }
                 break;
             case (byte) '+':
                 token = new Token(TokenType.Plus, _ch);
@@ -97,9 +137,6 @@ public class Lexer
                 break;
             case (byte) '>':
                 token = new Token(TokenType.Gt, _ch);
-                break;
-            case (byte) '!':
-                token = new Token(TokenType.Bang, _ch);
                 break;
             case (byte) ';':
                 token = new Token(TokenType.Semicolon, _ch);

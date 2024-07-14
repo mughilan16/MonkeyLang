@@ -1,7 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53c5a8d7_002D9bc2_002D461c_002Dbe20_002D03a57d50d310/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestNextToken2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ff537eda_002D5996_002D4efe_002Db574_002Dea6b20c6c76f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestLetStatement" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::D96F2F3A-9BE3-4BAC-9CAC-CED18D6E0702::net8.0::Monkey.Test.LexerTest.TestNextToken2&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::D96F2F3A-9BE3-4BAC-9CAC-CED18D6E0702::net8.0::Monkey.Test.LexerTest.TestLetStatement&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::D96F2F3A-9BE3-4BAC-9CAC-CED18D6E0702::net8.0::Monkey.Test.LexerTest.TestReturnStatement&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=lparan/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

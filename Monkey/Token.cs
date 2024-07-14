@@ -4,15 +4,23 @@
     public record Token
     {
         public TokenType Type { get; set; }
-        public string? Literal { get; set; }
+        public string Literal { get; set; }
 
         private static readonly Dictionary<string, TokenType> Keywords = new Dictionary<string, TokenType>
         {
             {"fn", TokenType.Function},
-            {"let", TokenType.Let}
+            {"let", TokenType.Let},
+            {"true", TokenType.True},
+            {"false", TokenType.False},
+            {"if", TokenType.If},
+            {"else", TokenType.Else},
+            {"return", TokenType.Return},
         };
 
-        public Token() { }
+        public Token()
+        {
+            Literal = "";
+        }
 
         public Token(TokenType type, string literal)
         {
@@ -40,6 +48,9 @@
 
         Ident,
         Int,
+        
+        Eq,
+        NotEq,
 
         Assign = '=',
         Plus = '+',
@@ -61,6 +72,11 @@
 
         Function,
         Let,
+        True,
+        False,
+        If,
+        Else,
+        Return
         
     }
 }
