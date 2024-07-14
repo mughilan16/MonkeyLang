@@ -2,12 +2,26 @@
 
 namespace Monkey;
 
+public enum Precedence
+{
+    Lowest = 1,
+    Equals = 2,
+    LessGreater = 3,
+    Sum = 4,
+    Product = 5,
+    Prefix = 6,
+    Call = 7,
+}
+
 public class Parser
 {
     private readonly Lexer _lexer;
     private Token _curToken;
     private Token _peekToken;
     private readonly List<string> _errors;
+    
+    private readonly Dictionary<TokenType, Func<IExpression>> _prefixParseFns = new();
+    private readonly Dictionary<TokenType, Func<IExpression>> _infixParseFns = new();
 
     public Parser(Lexer lexer)
     {
@@ -15,6 +29,17 @@ public class Parser
         _errors = [];
         _curToken = _lexer.NextToken();
         _peekToken = _lexer.NextToken();
+        RegisterPrefix(TokenType.Ident, ParseIdentifier);
+    }
+
+    private void RegisterPrefix(TokenType tokenType, Func<IExpression> fn)
+    {
+        _prefixParseFns[tokenType] = fn;
+    }
+
+    private void RegisterInfix(TokenType tokenType, Func<IExpression> fn)
+    {
+        _infixParseFns[tokenType] = fn;
     }
 
     private void NextToken()
@@ -41,6 +66,25 @@ public class Parser
             PeekError(t);
             return false;
         }
+    }
+
+    private IExpression ParseIdentifier()
+    {
+        return new Identifier
+        {
+            Token = _curToken, 
+            Value = _curToken.Literal
+        };
+    }
+
+    private IExpression? ParseExpression(Precedence precedence)
+    {
+        if (!_prefixParseFns.TryGetValue(_curToken.Type, out var prefix))
+        {
+            return null;
+        }
+        var leftExp = prefix();
+        return leftExp;
     }
 
     private LetStatement? ParseLetStatement()
@@ -77,7 +121,23 @@ public class Parser
             Token = _curToken
         };
         NextToken();
-        while (_curToken.Type == Semicolon)
+        while (_curToken.Type != Semicolon)
+        {
+            NextToken();
+        }
+
+        return statement;
+    }
+
+    private ExpressionStatement ParseExpressionStatement()
+    {
+        var statement = new ExpressionStatement
+        {
+            Token = _curToken,
+            Expression = ParseExpression(Precedence.Lowest)
+        };
+
+        if (_peekToken.Type == Semicolon)
         {
             NextToken();
         }
@@ -91,7 +151,7 @@ public class Parser
         {
             Let => ParseLetStatement(),
             Return => ParseReturnStatement(),
-            _ => null
+            _ => ParseExpressionStatement()
         };
     }
 

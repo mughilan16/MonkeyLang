@@ -1,10 +1,12 @@
-﻿using System.Linq.Expressions;
+﻿using System.IO;
+using System.Text;
 
 namespace Monkey;
 
 public interface INode
 {
     string TokenLiteral();
+    string? String();
 }
 
 public interface IStatement: INode
@@ -19,7 +21,7 @@ public interface IExpression: INode
     public new string TokenLiteral();
 }
 
-public class Identifier: INode
+public class Identifier: IExpression
 {
     public Token Token;
     public string Value;
@@ -27,13 +29,19 @@ public class Identifier: INode
     {
         return Token.Literal;
     }
+
+    public void ExpressionNode() {}
+    public string String()
+    {
+        return Value;
+    }
 }
 
 public class LetStatement: IStatement
 {
     public Token Token { get; set; }
     public Identifier Name { get; set; }
-    public IExpression Value { get; set; }
+    public IExpression? Value { get; set; }
 
     public void StatementNode() { }
 
@@ -41,15 +49,76 @@ public class LetStatement: IStatement
     {
         return Token.Literal;
     }
+    public string? String()
+    {
+        MemoryStream buffer = new();
+        StreamWriter writer = new(buffer, Encoding.Unicode);
+
+        try
+        {
+            writer.Write(TokenLiteral() + " ");
+            writer.Write(Name.String());
+            writer.Write(" = ");
+            if (Value != null)
+            {
+                writer.Write(Value.String());
+            }
+            writer.Write(";");
+        }
+        finally
+        {
+            writer.Dispose();
+        }
+
+        return buffer.ToString();
+    }
 }
 
 public class ReturnStatement : IStatement
 {
     public Token Token;
-    public IExpression ReturnValue;
+    public IExpression? ReturnValue;
     public void StatementNode() {}
     
     public string TokenLiteral()
+    {
+        return Token.Literal;
+    }
+    public string? String()
+    {
+        MemoryStream buffer = new();
+        StreamWriter writer = new(buffer, Encoding.Unicode);
+
+        try
+        {
+            writer.Write(TokenLiteral() + " ");
+            if (ReturnValue != null)
+            {
+                writer.Write(ReturnValue.String());
+            }
+            writer.Write(";");
+        }
+        finally
+        {
+            writer.Dispose();
+        }
+
+        return buffer.ToString();
+    }
+}
+
+public class ExpressionStatement : IStatement
+{
+    public Token Token;
+    public IExpression Expression;
+    public void StatementNode() {}
+    
+    public string TokenLiteral()
+    {
+        return Token.Literal;
+    }
+
+    public string String()
     {
         return Token.Literal;
     }
@@ -57,10 +126,30 @@ public class ReturnStatement : IStatement
 
 public class Program: INode
 {
-    public List<IStatement> Statements = [];
+    public readonly List<IStatement> Statements = [];
 
     public string TokenLiteral()
     {
         return Statements.Count > 0 ? Statements[0].TokenLiteral() : "";
+    }
+
+    public string? String()
+    {
+        MemoryStream buffer = new();
+        StreamWriter writer = new(buffer, Encoding.Unicode);
+
+        try
+        {
+            foreach (var s in Statements)
+            {
+                writer.Write(s.String());
+            }
+        }
+        finally
+        {
+            writer.Dispose();
+        }
+
+        return buffer.ToString();
     }
 }

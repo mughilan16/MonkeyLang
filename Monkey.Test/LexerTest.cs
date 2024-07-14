@@ -219,4 +219,21 @@ public class LexerTest
             Assert.That(returnStatement.TokenLiteral(), Is.EqualTo("return"));
         }
     }
+
+    [Test]
+    public void TestIdentifierExpression()
+    {
+        const string input = "foobar";
+        Lexer l = new(input);
+        Parser p = new(l);
+        var program = p.ParseProgram();
+        CheckParserErrors(p);
+        Assert.That(program.Statements, Has.Count.EqualTo(1));
+        Assert.That(program.Statements[0], Is.InstanceOf(typeof(ExpressionStatement)));
+        var expressionStatement = (ExpressionStatement) program.Statements[0];
+        Assert.That(expressionStatement.Expression, Is.InstanceOf(typeof(Identifier)));
+        var ident = (Identifier) expressionStatement.Expression;
+        Assert.That(ident.Value, Is.EqualTo("foobar"));
+        Assert.That(ident.TokenLiteral(), Is.EqualTo("foobar"));
+    }
 }
