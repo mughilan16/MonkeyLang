@@ -20,8 +20,8 @@ public class Parser
     private Token _peekToken;
     private readonly List<string> _errors;
     
-    private readonly Dictionary<TokenType, Func<IExpression>> _prefixParseFns = new();
-    private readonly Dictionary<TokenType, Func<IExpression>> _infixParseFns = new();
+    private readonly Dictionary<TokenType, Func<IExpression?>> _prefixParseFns = new();
+    private readonly Dictionary<TokenType, Func<IExpression?>> _infixParseFns = new();
 
     public Parser(Lexer lexer)
     {
@@ -30,6 +30,7 @@ public class Parser
         _curToken = _lexer.NextToken();
         _peekToken = _lexer.NextToken();
         RegisterPrefix(TokenType.Ident, ParseIdentifier);
+        RegisterPrefix(TokenType.Int, ParseIntegerLiteral);
     }
 
     private void RegisterPrefix(TokenType tokenType, Func<IExpression> fn)
@@ -68,7 +69,7 @@ public class Parser
         }
     }
 
-    private IExpression ParseIdentifier()
+    private IExpression? ParseIdentifier()
     {
         return new Identifier
         {
@@ -77,6 +78,27 @@ public class Parser
         };
     }
 
+    private IExpression? ParseIntegerLiteral()
+    {
+        var literal = new IntegerLiteral
+        {
+            Token = _curToken
+        };
+        long value;
+        try
+        {
+            value = long.Parse(_curToken.Literal);
+        }
+        catch (FormatException)
+        {
+            _errors.Add($"could not parse {_curToken.Literal} as a integer");
+            return null;
+        }
+
+        literal.Value = value;
+        return literal;
+    }
+    
     private IExpression? ParseExpression(Precedence precedence)
     {
         if (!_prefixParseFns.TryGetValue(_curToken.Type, out var prefix))

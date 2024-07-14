@@ -214,7 +214,7 @@ public class LexerTest
 
         foreach (var statement in program.Statements)
         {
-            Assert.That(statement, Is.InstanceOf(typeof(ReturnStatement)));
+            Assert.That(statement, Is.InstanceOf<ReturnStatement>());
             var returnStatement = (ReturnStatement)statement;
             Assert.That(returnStatement.TokenLiteral(), Is.EqualTo("return"));
         }
@@ -223,17 +223,38 @@ public class LexerTest
     [Test]
     public void TestIdentifierExpression()
     {
-        const string input = "foobar";
+        const string input = "foobar;";
         Lexer l = new(input);
         Parser p = new(l);
         var program = p.ParseProgram();
         CheckParserErrors(p);
         Assert.That(program.Statements, Has.Count.EqualTo(1));
-        Assert.That(program.Statements[0], Is.InstanceOf(typeof(ExpressionStatement)));
+        Assert.That(program.Statements[0], Is.InstanceOf<ExpressionStatement>());
         var expressionStatement = (ExpressionStatement) program.Statements[0];
-        Assert.That(expressionStatement.Expression, Is.InstanceOf(typeof(Identifier)));
+        Assert.That(expressionStatement.Expression, Is.InstanceOf<Identifier>());
         var ident = (Identifier) expressionStatement.Expression;
-        Assert.That(ident.Value, Is.EqualTo("foobar"));
-        Assert.That(ident.TokenLiteral(), Is.EqualTo("foobar"));
+        Assert.Multiple(() =>
+        {
+            Assert.That(ident.Value, Is.EqualTo("foobar"));
+            Assert.That(ident.TokenLiteral(), Is.EqualTo("foobar"));
+        });
+    }
+
+    [Test]
+    public void TestIntegerLiteralExpression()
+    {
+        const string input = "5;";
+        Lexer l = new(input);
+        Parser p = new(l);
+        var program = p.ParseProgram();
+        CheckParserErrors(p);
+        
+        Assert.That(program.Statements, Has.Count.EqualTo(1));
+        Assert.That(program.Statements[0], Is.InstanceOf<ExpressionStatement>());
+        var statement = (ExpressionStatement)program.Statements[0];
+        Assert.That(statement.Expression, Is.InstanceOf<IntegerLiteral>());
+        var intLiteral = (IntegerLiteral)statement.Expression;
+        Assert.That(intLiteral.Value, Is.EqualTo(5));
+        Assert.That(intLiteral.TokenLiteral(), Is.EqualTo("5"));
     }
 }

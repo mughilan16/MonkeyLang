@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Text;
+﻿using System.Text;
 
 namespace Monkey;
 
@@ -19,6 +18,21 @@ public interface IExpression: INode
 {
     protected abstract void ExpressionNode();
     public new string TokenLiteral();
+}
+
+public class IntegerLiteral: IExpression
+{
+    public Token Token;
+    public long Value; // long = int64
+    public void ExpressionNode() {}
+    public string TokenLiteral()
+    {
+        return Token.Literal;
+    }
+    public string String()
+    {
+        return Token.Literal;
+    }
 }
 
 public class Identifier: IExpression
