@@ -4,9 +4,9 @@
     public record Token
     {
         public TokenType Type { get; set; }
-        public string Literal { get; set; }
+        public string? Literal { get; set; }
 
-        private static readonly Dictionary<string, TokenType> Keywords = new Dictionary<string, TokenType>
+        private static readonly Dictionary<string, TokenType> Keywords = new()
         {
             {"fn", TokenType.Function},
             {"let", TokenType.Let},
@@ -22,7 +22,7 @@
             Literal = "";
         }
 
-        public Token(TokenType type, string literal)
+        public Token(TokenType type, string? literal)
         {
             Type = type;
             Literal = literal;
