@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj": {}
+    "/home/mughil/personal/MonkeyLang/Monkey/Monkey.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj": {
+    "/home/mughil/personal/MonkeyLang/Monkey/Monkey.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj",
+        "projectUniqueName": "/home/mughil/personal/MonkeyLang/Monkey/Monkey.csproj",
         "projectName": "Monkey",
-        "projectPath": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\Monkey.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\RiderProjects\\MonkeyLang\\Monkey\\obj\\",
+        "projectPath": "/home/mughil/personal/MonkeyLang/Monkey/Monkey.csproj",
+        "packagesPath": "/home/mughil/.nuget/packages/",
+        "outputPath": "/home/mughil/personal/MonkeyLang/Monkey/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/mughil/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
