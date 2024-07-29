@@ -2,12 +2,11 @@
 
 public class Repl(string prompt = ">> ")
 {
-    private readonly string _prompt = prompt;
     public void Start()
     {
         while (true)
         {
-            Console.Write(_prompt);
+            Console.Write(prompt);
             var input = Console.ReadLine();
             if (input == null)
             {
